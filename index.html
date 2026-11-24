@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Muhamad Ridwan – Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c0-bg:#E9B44C; --c0-ink:#2B1B0E;
+  --c1-bg:#1F6F54; --c1-ink:#EAF7EF;
+  --c2-bg:#3A4FD7; --c2-ink:#F1F3FF;
+  --c3-bg:#151515; --c3-ink:#F2F2F2;
+  --c4-bg:#F28BB3; --c4-ink:#2A0F1B;
+  --bg:var(--c0-bg); --ink:var(--c0-ink);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--c0-bg:#B98A2B; --c4-bg:#C26690; --c1-bg:#17543F; --c2-bg:#2B3AA6; color-scheme:dark;}
+}
+:root[data-theme="dark"]{--c0-bg:#B98A2B; --c4-bg:#C26690; --c1-bg:#17543F; --c2-bg:#2B3AA6; color-scheme:dark;}
+html,body{height:100%}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Familjen Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:1.125rem;line-height:1.55;transition:background-color .45s ease,color .45s ease}
+body[data-active="0"]{--bg:var(--c0-bg);--ink:var(--c0-ink)}
+body[data-active="1"]{--bg:var(--c1-bg);--ink:var(--c1-ink)}
+body[data-active="2"]{--bg:var(--c2-bg);--ink:var(--c2-ink)}
+body[data-active="3"]{--bg:var(--c3-bg);--ink:var(--c3-ink)}
+body[data-active="4"]{--bg:var(--c4-bg);--ink:var(--c4-ink)}
+:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+a{color:inherit}
+.stage{min-height:100%;display:flex;flex-direction:column;padding:1.5rem}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;font-weight:600}
+.top > span:last-child{font-weight:400;opacity:.8;text-align:right}
+.id{display:flex;align-items:center;gap:.9rem}
+.foto{flex:none;width:4.5rem;height:4.5rem;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;font-size:.8rem;font-weight:600;text-align:center;line-height:1.2;overflow:hidden}
+.foto img{width:100%;height:100%;object-fit:cover}
+.main{flex:1;display:grid;gap:2rem;align-items:center;padding:2rem 0}
+.list{list-style:none;margin:0;padding:0}
+.list button{all:unset;display:block;cursor:pointer;font-weight:700;font-size:clamp(2.2rem,7.5vw,5.75rem);line-height:1.02;letter-spacing:-.035em;opacity:.3;transition:opacity .25s,transform .25s;padding:.1em 0}
+.list button:hover,.list button:focus-visible,.list button[aria-current="true"]{opacity:1}
+.list button[aria-current="true"]{transform:translateX(.25em)}
+.list button:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+.panel{max-width:30rem;min-height:15rem}
+.panel[hidden]{display:none}
+.panel .tag{display:inline-block;border:2px solid currentColor;border-radius:2rem;padding:.05rem .8rem;font-weight:600;font-size:.95rem;margin-bottom:1rem}
+.panel p{margin:0 0 1rem}
+.panel ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+.panel li{border:2px solid currentColor;border-radius:.4rem;padding:.1rem .7rem;font-weight:600;font-size:.95rem}
+.panel a{font-weight:700}
+.panel .email{font-size:clamp(1.3rem,3.5vw,2rem);font-weight:700;letter-spacing:-.02em;overflow-wrap:anywhere}
+.sertifikat h2{font-size:1rem;font-weight:700;margin:0 0 .75rem}
+.sertifikat ul{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+.sertifikat li{border:2px solid currentColor;border-radius:.5rem;padding:.7rem .9rem;line-height:1.35}
+.sertifikat li strong{display:block;font-size:1rem}
+.sertifikat li span{font-size:.9rem;opacity:.85}
+.mid .panel{min-height:11rem}
+.showcase{margin-top:1.25rem;max-width:30rem}
+.frame{position:relative;aspect-ratio:16/9;border:2px solid currentColor;border-radius:.6rem;overflow:hidden;background:repeating-linear-gradient(135deg,rgba(128,128,128,.14) 0 12px,rgba(128,128,128,.04) 12px 24px)}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;text-align:center;padding:1rem;opacity:0;transition:opacity .35s;pointer-events:none}
+.slide.on{opacity:1;pointer-events:auto}
+.slide img,.slide video{width:100%;height:100%;object-fit:cover}
+.slide strong{font-size:1.1rem}
+.slide span{font-size:.9rem;opacity:.85}
+.controls{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-top:.6rem}
+.controls button{all:unset;cursor:pointer;border:2px solid currentColor;border-radius:.4rem;padding:0 .7rem;font-weight:600;font-size:1.15rem;line-height:1.4}
+.controls button:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.dots{display:flex;gap:.5rem}
+.dots button{width:.8rem;height:.8rem;padding:0;border-radius:50%;opacity:.45}
+.dots button[aria-current="true"]{opacity:1;background:currentColor}
+@media(prefers-reduced-motion:reduce){.slide{transition:none}}
+.slide:not(.on){visibility:hidden}
+.tonton{margin-top:.4rem;border:2px solid currentColor;border-radius:2rem;padding:.15rem .9rem;font-weight:700;text-decoration:none}
+.tonton:hover{text-decoration:underline}
+.bottom{font-size:.9rem;opacity:.8}
+@media(min-width:60rem){
+  body{overflow:hidden}
+  .stage{height:100%;padding:2rem 3rem}
+  .main{grid-template-columns:1.3fr 1fr 16rem;grid-template-rows:auto auto;align-content:center;align-items:start;padding:0}
+  .mid{display:contents}
+  .list{grid-column:1;grid-row:1/3;align-self:center}
+  .panels{grid-column:2;grid-row:1/3;align-self:center}
+  .panel{justify-self:start}
+  .showcase{grid-column:3;grid-row:1;margin:0;max-width:none;align-self:end}
+  .sertifikat{grid-column:3;grid-row:2;width:100%;margin-top:1.25rem}
+}
+@media(prefers-reduced-motion:reduce){body,.list button{transition:none}.list button[aria-current="true"]{transform:none}}
+</style>
+</head>
+<body data-active="0">
+<div class="stage">
+  <div class="top">
+    <div class="id">
+      <div class="foto"><img src="data:image/jpeg;base64,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" alt="Foto Muhamad Ridwan"></div>
+      <span>Muhamad Ridwan</span>
+    </div>
+    <span>Siswa TKJ, Cibionong</span>
+  </div>
+
+  <div class="main">
+    <ul class="list" aria-label="Daftar isi portofolio">
+      <li><button type="button" data-i="0" aria-current="true">Foto Praktek</button></li>
+      <li><button type="button" data-i="1" aria-current="false">Keahlian</button></li>
+      <li><button type="button" data-i="2" aria-current="false">Profil Sekolah</button></li>
+      <li><button type="button" data-i="3" aria-current="false">Tentang saya</button></li>
+      <li><button type="button" data-i="4" aria-current="false">Kontak</button></li>
+    </ul>
+
+    <div class="mid">
+    <div class="panels" aria-live="polite">
+      <section class="panel" data-p="0">
+        <span class="tag">2026 · Dokumentasi</span>
+        <p>Kumpulan foto kegiatan praktik di jurusan Teknik Komputer dan Jaringan.</p>
+        <ul><li>TKJ</li><li>Praktik</li></ul>
+      </section>
+      <section class="panel" data-p="1" hidden>
+        <span class="tag">Dipelajari di TKJ</span>
+        <p>Hal-hal yang saya pelajari dan praktikkan di jurusan Teknik Komputer dan Jaringan.</p>
+        <ul><li>Jaringan komputer</li><li>Perakitan PC</li><li>Troubleshooting</li></ul>
+      </section>
+      <section class="panel" data-p="2" hidden>
+        <span class="tag">2025 · Website</span>
+        <p>Situs informasi sekolah dengan pengumuman, galeri, dan formulir pendaftaran yang nyaman diisi dari ponsel.</p>
+        <ul><li>HTML &amp; CSS</li><li>JavaScript</li><li>SEO dasar</li></ul>
+      </section>
+      <section class="panel" data-p="3" hidden>
+        <span class="tag">Tentang</span>
+        <p>Halo, saya Ridwan, siswa <a href="https://www.smkpluspnb.sch.id/" target="_blank" rel="noopener">SMK Plus Pelita Nusantara</a> jurusan Teknik Komputer dan Jaringan (TKJ).</p>
+        <p>Saya berumur 15 tahun dan duduk di kelas 10. Impian saya adalah menjadi sukses dan membahagiakan orang tua.</p>
+      </section>
+      <section class="panel" data-p="4" hidden>
+        <span class="tag">Terbuka untuk proyek baru</span>
+        <p><a class="email" href="mailto:wannnnnnn18@gmail.com">wannnnnnn18@gmail.com</a></p>
+        <ul><li><a href="#">LinkedIn</a></li><li><a href="#">GitHub</a></li><li><a href="#">Instagram</a></li></ul>
+      </section>
+    </div>
+
+    <div class="showcase" role="group" aria-label="Galeri video dan slide proyek">
+      <div class="frame">
+        
+        
+        
+        <div class="slide on"><strong>Video perkenalan</strong><span>Tentang saya dalam 1 menit</span><a class="tonton" href="https://drive.google.com/file/d/10udnHyN3zRLkMXKNri9kncYtb0KaC3Or/view?usp=drivesdk" target="_blank" rel="noopener">Lihat video praktik</a></div>
+      </div>
+      
+    </div>
+    </div>
+
+    <aside class="sertifikat" aria-labelledby="judul-sertifikat">
+      <h2 id="judul-sertifikat">Sertifikat</h2>
+      <ul>
+        <li><strong>Responsive Web Design</strong><span>freeCodeCamp · 2024</span></li>
+        <li><strong>Google UX Design</strong><span>Coursera · 2025</span></li>
+        <li><strong>JavaScript Algorithms</strong><span>Dicoding · 2024</span></li>
+      </ul>
+    </aside>
+  </div>
+
+  <div class="bottom">© 2026 Muhamad Ridwan · Arahkan kursor atau ketuk judul untuk melihat isinya</div>
+</div>
+<script>
+(function(){
+  var buttons=document.querySelectorAll('.list button');
+  var panels=document.querySelectorAll('.panel');
+  var slides=document.querySelectorAll('.slide');
+  var dots=document.querySelectorAll('.dots button');
+  var cur=0;
+  function select(i){
+    document.body.setAttribute('data-active',i);
+    buttons.forEach(function(b){b.setAttribute('aria-current',b.dataset.i==i?'true':'false');});
+    panels.forEach(function(p){p.hidden=p.dataset.p!=i;});
+  }
+  buttons.forEach(function(b){
+    var i=b.dataset.i;
+    b.addEventListener('mouseenter',function(){select(i);});
+    b.addEventListener('focus',function(){select(i);});
+    b.addEventListener('click',function(){select(i);});
+  });
+  
+  
+  
+})();
+</script>
+</body>
+</html>
